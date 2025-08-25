@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder Pro - Build Professional Resumes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Build Your Professional Resume</h1>
+                    <p>Create stunning, ATS-friendly resumes with our expert templates and guided multi-step builder. Stand out from the competition and land your dream job.</p>
+                    <div class="hero-features">
+                        <div class="feature">
+                            <i class="fas fa-magic"></i>
+                            <span>4 Expert Templates</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-eye"></i>
+                            <span>Live Preview</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-download"></i>
+                            <span>PDF & HTML Export</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>ATS-Optimized</span>
+                        </div>
+                    </div>
+                    <button class="btn btn--primary btn--lg" id="get-started-btn">
+                        <i class="fas fa-rocket"></i>
+                        Get Started - It's Free
+                    </button>
+                </div>
+                <div class="hero-preview">
+                    <div class="resume-mockup">
+                        <img src="https://pplx-res.cloudinary.com/image/upload/v1755192802/pplx_project_search_images/31fe4f45926b9ccc3b2724f1b44f540aa3cff335.png" alt="Resume Template Preview" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Builder Form -->
+    <div id="builder-page" class="page">
+        <div class="builder-container">
+            <!-- Progress Header -->
+            <div class="progress-header">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-steps">
+                        <div class="step active" data-step="0">
+                            <div class="step-icon"><i class="fas fa-user"></i></div>
+                            <span>Personal</span>
+                        </div>
+                        <div class="step" data-step="1">
+                            <div class="step-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <span>Education</span>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-icon"><i class="fas fa-code"></i></div>
+                            <span>Projects</span>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-icon"><i class="fas fa-cogs"></i></div>
+                            <span>Skills</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Form Section -->
+                <div class="form-section">
+                    <div class="form-header">
+                        <h2 id="section-title">Personal Information</h2>
+                        <p id="section-description">Tell us about yourself to get started</p>
+                    </div>
+
+                    <form id="resume-form">
+                        <!-- Personal Info Step -->
+                        <div class="form-step active" data-step="0">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name *</label>
+                                    <input type="text" class="form-control" name="fullName" required placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" name="email" required placeholder="your.email@example.com">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" name="phone" required placeholder="(555) 123-4567">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Location *</label>
+                                    <input type="text" class="form-control" name="address" required placeholder="City, State">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">LinkedIn Profile</label>
+                                    <input type="url" class="form-control" name="linkedin" placeholder="linkedin.com/in/yourprofile">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Portfolio/Website</label>
+                                    <input type="url" class="form-control" name="portfolio" placeholder="yourportfolio.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Professional Summary *</label>
+                                <textarea class="form-control" name="summary" required rows="4" placeholder="Brief description of your professional background and goals..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Education Step -->
+                        <div class="form-step" data-step="1">
+                            <div id="education-entries">
+                                <div class="education-entry">
+                                    <div class="entry-header">
+                                        <h4>Education #1</h4>
+                                        <button type="button" class="btn-remove" onclick="removeEducation(this)"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="form-label">Degree *</label>
+                                            <input type="text" class="form-control" name="degree" required placeholder="Bachelor of Science in Computer Science">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Institution *</label>
+                                            <input type="text" class="form-control" name="institution" required placeholder="University Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="form-label">Graduation Date *</label>
+                                            <input type="month" class="form-control" name="graduationDate" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">GPA</label>
+                                            <input type="text" class="form-control" name="gpa" placeholder="3.8">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Relevant Coursework</label>
+                                        <textarea class="form-control" name="coursework" rows="2" placeholder="Data Structures, Algorithms, Web Development..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn--outline btn--sm" onclick="addEducation()">
+                                <i class="fas fa-plus"></i> Add Another Education
+                            </button>
+                        </div>
+
+                        <!-- Projects Step -->
+                        <div class="form-step" data-step="2">
+                            <div id="projects-entries">
+                                <div class="project-entry">
+                                    <div class="entry-header">
+                                        <h4>Project #1</h4>
+                                        <button type="button" class="btn-remove" onclick="removeProject(this)"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="form-label">Project Name *</label>
+                                            <input type="text" class="form-control" name="name" required placeholder="E-commerce Platform">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Duration</label>
+                                            <input type="text" class="form-control" name="duration" placeholder="3 months">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Description *</label>
+                                        <textarea class="form-control" name="description" required rows="3" placeholder="Describe what you built and the impact it had..."></textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label class="form-label">Technologies Used *</label>
+                                            <input type="text" class="form-control" name="technologies" required placeholder="React, Node.js, MongoDB, AWS">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Project Link</label>
+                                            <input type="url" class="form-control" name="link" placeholder="github.com/username/project">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn--outline btn--sm" onclick="addProject()">
+                                <i class="fas fa-plus"></i> Add Another Project
+                            </button>
+                        </div>
+
+                        <!-- Skills Step -->
+                        <div class="form-step" data-step="3">
+                            <div class="skills-section">
+                                <div class="form-group">
+                                    <label class="form-label">Technical Skills *</label>
+                                    <input type="text" class="form-control" name="technical" required placeholder="JavaScript, Python, React, Node.js, SQL (separate with commas)">
+                                    <small class="form-hint">List your technical skills separated by commas</small>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Soft Skills</label>
+                                    <input type="text" class="form-control" name="soft" placeholder="Leadership, Communication, Problem Solving (separate with commas)">
+                                    <small class="form-hint">List your soft skills separated by commas</small>
+                                </div>
+                                <div class="languages-section">
+                                    <label class="form-label">Languages</label>
+                                    <div id="languages-entries">
+                                        <div class="language-entry">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="languageName" placeholder="English">
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="languageProficiency">
+                                                        <option value="">Select Proficiency</option>
+                                                        <option value="Native">Native</option>
+                                                        <option value="Fluent">Fluent</option>
+                                                        <option value="Advanced">Advanced</option>
+                                                        <option value="Intermediate">Intermediate</option>
+                                                        <option value="Basic">Basic</option>
+                                                    </select>
+                                                </div>
+                                                <button type="button" class="btn-remove" onclick="removeLanguage(this)"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn--outline btn--sm" onclick="addLanguage()">
+                                        <i class="fas fa-plus"></i> Add Language
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Navigation Buttons -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn--secondary" id="prev-btn" style="display: none;">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <div class="nav-actions">
+                            <button type="button" class="btn btn--outline" id="preview-btn">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button type="button" class="btn btn--primary" id="next-btn">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button type="button" class="btn btn--primary" id="complete-btn" style="display: none;">
+                                <i class="fas fa-check"></i> Complete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="preview-section" id="preview-section">
+                    <div class="preview-header">
+                        <h3>Live Preview</h3>
+                        <div class="template-selector">
+                            <select id="template-selector" class="form-control">
+                                <option value="modern-minimalist">Modern Minimalist</option>
+                                <option value="executive-dark">Executive Dark</option>
+                                <option value="creative-gradient">Creative Gradient</option>
+                                <option value="ats-friendly">ATS-Friendly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="resume-preview" id="resume-preview">
+                        <!-- Preview content will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Resume Preview</h3>
+                <div class="modal-actions">
+                    <select id="modal-template-selector" class="form-control">
+                        <option value="modern-minimalist">Modern Minimalist</option>
+                        <option value="executive-dark">Executive Dark</option>
+                        <option value="creative-gradient">Creative Gradient</option>
+                        <option value="ats-friendly">ATS-Friendly</option>
+                    </select>
+                    <button type="button" class="btn btn--outline" id="download-html-btn">
+                        <i class="fas fa-file-code"></i> Download HTML
+                    </button>
+                    <button type="button" class="btn btn--primary" id="download-pdf-btn">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </button>
+                    <button type="button" class="btn btn--secondary" id="close-modal-btn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="resume-preview" id="modal-resume-preview">
+                    <!-- Modal preview content will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Page -->
+    <div id="success-page" class="page">
+        <div class="success-container">
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Resume Created Successfully!</h2>
+                <p>Your professional resume has been created and is ready to download.</p>
+                <div class="success-actions">
+                    <button type="button" class="btn btn--primary" id="final-download-btn">
+                        <i class="fas fa-download"></i> Download Resume
+                    </button>
+                    <button type="button" class="btn btn--outline" id="start-new-btn">
+                        <i class="fas fa-plus"></i> Create New Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
